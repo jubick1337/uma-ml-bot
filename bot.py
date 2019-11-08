@@ -8,10 +8,6 @@ bot = telebot.TeleBot(TOKEN)
 server = Flask(__name__)
 model = Prediction()
 
-@bot.message_handlers(content_types=['document'])
-def predict_doc(message):
-    print(message)
-    return
 
 @bot.message_handler(content_types=['photo'])
 def predict(message):
@@ -24,6 +20,12 @@ def predict(message):
 
         res = model.predict('temp.png')
         bot.send_message(message.chat.id,'Class: ' + str(res))
+
+
+@bot.message_handler(content_types=['document'])
+def predict_doc(message):
+    print("doc")
+    return
 
 @bot.message_handler(commands=['help'])
 def help(message):
