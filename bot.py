@@ -11,7 +11,7 @@ model = Prediction()
 @bot.message_handlers(content_types=['document'])
 def predict_doc(message):
     print(message)
-    print(aa)
+    return
 
 @bot.message_handler(content_types=['photo'])
 def predict(message):
