@@ -10,7 +10,7 @@ model = Prediction()
 
 
 @bot.message_handler(content_types=['photo'])
-def predict(message):
+def predict_photo(message):
     for photo in message.photo:
         file_id = photo.file_id
         file_info = bot.get_file(file_id)
@@ -24,8 +24,15 @@ def predict(message):
 
 @bot.message_handler(content_types=['document'])
 def predict_doc(message):
-    print("doc")
-    return
+    file_id = message.document.file_id
+    file_info = bot.get_file(file_id)
+    downloaded_file = bot.download_file(file_info.file_path)
+    with open('temp.png', 'wb') as new_file:
+        new_file.write(downloaded_file)
+
+    res = model.predict('temp.png')
+    bot.send_message(message.chat.id,'Class: ' + str(res))
+
 
 @bot.message_handler(commands=['help'])
 def help(message):
