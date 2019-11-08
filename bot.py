@@ -13,6 +13,7 @@ model = Prediction()
 def predict(message):
     print(type(message.photo))
     for photo in message.photo:
+        print(photo)
         file_id = photo.file_id
         file_info = bot.get_file(file_id)
         downloaded_file = bot.download_file(file_info.file_path)
