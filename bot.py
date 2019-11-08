@@ -20,7 +20,8 @@ def predict_photo(message):
             new_file.write(downloaded_file)
 
         res = model.predict('temp.png')
-        bot.send_message(message.chat.id,'Class: ' + str(res))
+        bot.send_message(message.chat.id, 'Class: ' + str(res))
+
 
 @bot.message_handler(content_types=['document'])
 def predict_doc(message):
@@ -31,15 +32,18 @@ def predict_doc(message):
         new_file.write(downloaded_file)
 
     res = model.predict('temp.png')
-    bot.send_message(message.chat.id,'Class: ' + str(res))
+    bot.send_message(message.chat.id, 'Class: ' + str(res))
+
 
 @bot.message_handler(commands=['help'])
-def help(message):
+def get_help(message):
     bot.send_message(message.chat.id, 'Отправь мне картинку')
+
 
 @bot.message_handler(commands=['start'])
 def start(message):
     bot.reply_to(message, 'Привет, ' + message.from_user.first_name + " !")
+
 
 @bot.message_handler(func=lambda message: True, content_types=['text'])
 def non_image(message):
@@ -52,11 +56,13 @@ def get_message():
     bot.process_new_updates([telebot.types.Update.de_json(request.stream.read().decode("utf-8"))])
     return "!", 200
 
+
 @server.route("/")
 def webhook():
     bot.remove_webhook()
     bot.set_webhook(url='https://uma-ml-bot.herokuapp.com/' + TOKEN)
     return "!", 200
+
 
 if __name__ == "__main__":
     server.run(host="0.0.0.0", port=int(os.environ.get('PORT', 5000)))

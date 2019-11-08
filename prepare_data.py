@@ -1,10 +1,8 @@
-import pickle
-import pandas as pd
-import pprint
-import numpy as np
-from PIL import Image
 import os
 from shutil import copyfile
+
+import numpy as np
+import pandas as pd
 
 data = pd.read_csv('images_labelling.csv')
 
@@ -16,7 +14,6 @@ mask = np.random.rand(len(data)) < 0.8
 
 train = data[mask]
 val = data[~mask]
-
 
 if not os.path.exists('images_train'):
     os.mkdir('images_train')
@@ -37,6 +34,5 @@ if not os.path.exists('images_val'):
             os.mkdir('images_val\\' + str(row['label']))
         dst = os.getcwd() + '\\images_val\\' + str(row['label']) + '\\' + str(row['boxid']) + '.png'
         copyfile(src, dst)
-
 
 print('Done')

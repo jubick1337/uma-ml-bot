@@ -1,14 +1,14 @@
-from tensorflow.python.keras.backend import set_session
 import keras.backend as K
-import tensorflow as tf
-from keras.preprocessing.image import load_img
-from keras.preprocessing.image import img_to_array
-from keras.layers.normalization import BatchNormalization
-from keras.layers.convolutional import Conv2D
-from keras.layers.pooling import MaxPooling2D
-from keras.layers import GlobalAveragePooling2D, Dense, Dropout, Flatten, Input
-from keras.models import Sequential
 import numpy as np
+import tensorflow as tf
+from keras.layers import GlobalAveragePooling2D, Dense
+from keras.layers.convolutional import Conv2D
+from keras.layers.normalization import BatchNormalization
+from keras.layers.pooling import MaxPooling2D
+from keras.models import Sequential
+from keras.preprocessing.image import img_to_array
+from keras.preprocessing.image import load_img
+from tensorflow.python.keras.backend import set_session
 
 
 class Predictor:
