@@ -8,6 +8,10 @@ bot = telebot.TeleBot(TOKEN)
 server = Flask(__name__)
 model = Prediction()
 
+@bot.message_handlers(content_types=['document'])
+def predict_doc(message):
+    print(message)
+    print(aa)
 
 @bot.message_handler(content_types=['photo'])
 def predict(message):
