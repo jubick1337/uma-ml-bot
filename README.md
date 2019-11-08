@@ -18,4 +18,4 @@ Loss | Accuracy
 0.24400990454355875 | 0.946666667620341
 
 # Размещение
-Бот был размещен на [Heroku](https://heroku.com), а в телеграме его можно найти как [@UmaML_bot](t.me/UmaML_bot)
+Бот был размещен на [Heroku](https://heroku.com), а в телеграме его можно найти как [@UmaML_bot](https://t.me/UmaML_bot)
