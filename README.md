@@ -10,6 +10,7 @@ Uma.Challenge ml section task
 ![model](https://i.imgur.com/EfX6JBP.png)
 
 Модель была обучена на [Google.Colab](https://colab.research.google.com), процесс обучения представлен в [ноутбуке](uma_model.ipynb)
+
 Оценка модели после 100 эпох обучения:
 
 Loss | Accuracy
