@@ -44,7 +44,7 @@ def start(message):
 @bot.message_handler(func=lambda message: True, content_types=['text'])
 def non_image(message):
     bot.reply_to(message, 'Я не понимаю' + emojize(':pouting_face:', use_aliases=True))
-    bot.send_message(message.chat.id, 'Лучше бы катиночку отправил')
+    bot.send_message(message.chat.id, 'Лучше бы картиночку отправил')
 
 
 @server.route('/' + TOKEN, methods=['POST'])
