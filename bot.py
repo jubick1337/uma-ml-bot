@@ -12,18 +12,15 @@ model = Prediction()
 @bot.message_handler(content_types=['photo'])
 def predict(message):
     for photo in message.photo:
-        print(photo)
-    file_id = message.photo[-1].file_id
-    file_info = bot.get_file(file_id)
-    downloaded_file = bot.download_file(file_info.file_path)
+        file_id = photo.file_id
+        file_info = bot.get_file(file_id)
+        downloaded_file = bot.download_file(file_info.file_path)
+        with open('temp.png', 'wb') as new_file:
+            new_file.write(downloaded_file)
 
-    with open('source_img.png', 'wb') as new_file:
-        new_file.write(downloaded_file)
-
-    res = model.predict('source_img.png')
-    os.remove('source_img.png')
-
-    bot.send_message(message.chat.id,'Class: ' + str(res))
+        res = model.predict('temp.png')
+        os.remove('temp.png')
+        bot.send_message(message.chat.id,'Class: ' + str(res))
 
 
 @bot.message_handler(commands=['help'])
