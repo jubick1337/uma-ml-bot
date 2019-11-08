@@ -40,8 +40,6 @@ class Prediction:
     def predict(self, path):
         K.clear_session()
         img = img_to_array(load_img(path, target_size=(224, 224))) / 255
-        print(type(img))
-        print(img.shape)
         img = img.reshape([-1, 224, 224, 3])
         global sess
         global graph

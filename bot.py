@@ -11,7 +11,6 @@ model = Prediction()
 
 @bot.message_handler(content_types=['photo'])
 def predict(message):
-    print(type(message.photo))
     for photo in message.photo:
         file_id = photo.file_id
         file_info = bot.get_file(file_id)
@@ -21,7 +20,7 @@ def predict(message):
 
         res = model.predict('temp.png')
         bot.send_message(message.chat.id,'Class: ' + str(res))
-    
+
 @bot.message_handler(commands=['help'])
 def help(message):
     bot.send_message(message.chat.id, 'Отправь мне картинку')
