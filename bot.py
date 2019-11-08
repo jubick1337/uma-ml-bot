@@ -11,6 +11,8 @@ model = Prediction()
 
 @bot.message_handler(content_types=['photo'])
 def predict(message):
+    for photo in message.photo:
+        print(photo)
     file_id = message.photo[-1].file_id
     file_info = bot.get_file(file_id)
     downloaded_file = bot.download_file(file_info.file_path)
@@ -21,12 +23,16 @@ def predict(message):
     res = model.predict('source_img.png')
     os.remove('source_img.png')
 
-    bot.reply_to(message, str(res))
+    bot.send_message(message.chat.id,'Class: ' + str(res))
 
+
+@bot.message_handler(commands=['help'])
+def help(message):
+    bot.send_message(message.chat.id, 'Отправь мне картинку')
 
 @bot.message_handler(commands=['start'])
 def start(message):
-    bot.reply_to(message, 'Hello, ' + message.from_user.first_name + " !")
+    bot.reply_to(message, 'Привет, ' + message.from_user.first_name + " !")
 
 
 @bot.message_handler(func=lambda message: True, content_types=['text'])
