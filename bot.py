@@ -11,6 +11,7 @@ model = Prediction()
 
 @bot.message_handler(content_types=['photo'])
 def predict(message):
+    print(type(message.photo))
     for photo in message.photo:
         file_id = photo.file_id
         file_info = bot.get_file(file_id)
