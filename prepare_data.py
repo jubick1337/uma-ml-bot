@@ -22,20 +22,20 @@ if not os.path.exists('images_train'):
     os.mkdir('images_train')
     print('Making training set')
     for index, row in train.iterrows():
-        src = os.getcwd() + "\\images\\" + str(row['boxid']) + ".png"
+        src = os.getcwd() + '\\images\\' + str(row['boxid']) + '.png'
         if not os.path.exists('images_train\\' + str(row['label'])):
             os.mkdir('images_train\\' + str(row['label']))
-        dst = os.getcwd() + "\\images_train\\" + str(row['label']) + "\\" + str(row['boxid']) + ".png"
+        dst = os.getcwd() + '\\images_train\\' + str(row['label']) + '\\' + str(row['boxid']) + '.png'
         copyfile(src, dst)
 
 if not os.path.exists('images_val'):
     os.mkdir('images_val')
     print('Making val set')
     for index, row in val.iterrows():
-        src = os.getcwd() + "\\images\\" + str(row['boxid']) + ".png"
+        src = os.getcwd() + '\\images\\' + str(row['boxid']) + '.png'
         if not os.path.exists('images_val\\' + str(row['label'])):
             os.mkdir('images_val\\' + str(row['label']))
-        dst = os.getcwd() + "\\images_val\\" + str(row['label']) + "\\" + str(row['boxid']) + ".png"
+        dst = os.getcwd() + '\\images_val\\' + str(row['label']) + '\\' + str(row['boxid']) + '.png'
         copyfile(src, dst)
 
 

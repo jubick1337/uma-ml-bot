@@ -1,13 +1,13 @@
 from emoji import emojize
 import os
 import telebot
-from predict import Prediction
+from predictor import Predictor
 from flask import Flask, request
 
 TOKEN = '1028491931:AAHHw3d43K2NWVIYLOWlQoLYf9bPmr4IDLc'
 bot = telebot.TeleBot(TOKEN)
 server = Flask(__name__)
-model = Prediction()
+model = Predictor()
 
 
 @bot.message_handler(content_types=['photo'])

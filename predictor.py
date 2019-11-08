@@ -11,7 +11,7 @@ from keras.models import Sequential
 import numpy as np
 
 
-class Prediction:
+class Predictor:
     def __create_model(self):
         model = Sequential()
 
